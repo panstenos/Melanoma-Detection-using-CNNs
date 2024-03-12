@@ -23,3 +23,4 @@ This dataset, consists of 13,900 meticulously curated images of a uniform size o
 | Benign             | 6289         | 1000        |
 | Malignant          | 5590         | 1000        |
 
+To obtain the data [click here!](https://www.kaggle.com/datasets/bhaveshmittal/melanoma-cancer-dataset/data)
