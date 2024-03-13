@@ -69,7 +69,7 @@ class myCallback(tf.keras.callbacks.Callback):
 ```
 you call this function when you fit the model like so:
 ```python
-history2 = model2.fit(..., callbacks=[callbacks])
+history = model.fit(..., callbacks=[callbacks])
 ```
 
 ## Model Performance Comparison
