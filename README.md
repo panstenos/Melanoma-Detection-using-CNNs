@@ -77,5 +77,5 @@ history = model.fit(..., callbacks=[callbacks])
 | Model          | Train Accuracy | Test Accuracy |
 |----------------|----------------|---------------|
 | Custom CNN     | 0.8780         | 0.8700        |
-| AlexNet        | 0.6400         | 0.8600        |
+| AlexNet        | 0.8640         | 0.8600        |
 | InceptionV3    | 0.8840         | 0.9000        |
