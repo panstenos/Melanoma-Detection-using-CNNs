@@ -94,7 +94,7 @@ AlexNet training history (original)
 
 ![image](https://github.com/panstenos/Melanoma-Detection-using-CNNs/assets/112823396/5cff822f-798b-4c1d-a6e3-38e747f2a195)
 
-As you can see from the figure above, validation accuracy excibited some singificant fluctuations. This was a result from running only 5 validation steps. To overcome this problem, in Preprocessing B, I doubled the number of validation steps. These adjustments proved very effective as the fluctuationd were reduced to about ±4%. Making that change  while keeping the augmentations resulted in the following graph:
+As you can see from the figure above, the training and the validation accuracy excibited some singificant fluctuations. This was a result from running only 25 training steps and 5 validation steps. To overcome this problem, in Preprocessing B, I doubled the number of both steps. These adjustments proved very effective as the fluctuationd were reduced to about ±4%. Making that change  while keeping the augmentations resulted in the following training history for the AlexNet model:
 
 ![image](https://github.com/panstenos/Melanoma-Detection-using-CNNs/assets/112823396/95af9b9c-a2b3-43a4-99c6-e6538f0fcefa)
 
