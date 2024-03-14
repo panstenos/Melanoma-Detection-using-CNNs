@@ -1,12 +1,12 @@
 # Melanoma-Detection-using-CNNs
 Training CNNs to classify malignant from benign melanomas
 
-<figure style="float:left; margin-right: 10px;">
+<figure style="float:left; margin-right: 5px;">
     <img src="https://github.com/panstenos/Melanoma-Detection-using-CNNs/assets/112823396/785079d5-1bed-4d62-982b-5fb8fa9f2c08">
     <figcaption>Benign Melanoma</figcaption>
 </figure>
 
-<figure style="float:left; margin-right: 10px;">
+<figure style="float:left; margin-right: 5px;">
     <img src="https://github.com/panstenos/Melanoma-Detection-using-CNNs/assets/112823396/64ab050e-4f08-4fbf-bb72-4e8ab23faa25">
     <figcaption>Malignant Melanoma</figcaption>
 </figure>
