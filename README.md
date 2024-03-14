@@ -1,10 +1,7 @@
 # Melanoma-Detection-using-CNNs
 Training CNNs to classify malignant from benign melanomas
 
-![image](https://github.com/panstenos/Melanoma-Detection-using-CNNs/assets/112823396/0976d810-0da0-4079-ab63-3a6cef800a39)
-
-
-
+![image](https://github.com/panstenos/Melanoma-Detection-using-CNNs/assets/112823396/ca042868-f489-4628-9cb3-10c6ab96c5cf)
 
 ## Context
 Melanoma, a lethal form of skin cancer, poses a significant public health challenge worldwide. Early detection and accurate diagnosis are critical for effective treatment and improved patient outcomes. This dataset serves as a valuable resource for researchers and healthcare practitioners striving to advance the field of dermatology and oncology.
@@ -93,6 +90,15 @@ history = model.fit(train_generator, steps_per_epoch=25, epochs=100, verbose=1, 
 | AlexNet        | 0.8640         | 0.8600        |   9s           |
 | InceptionV3    | 0.8880         | 0.9300        |  11s           |
 
+AlexNet training history (original)
+
+![image](https://github.com/panstenos/Melanoma-Detection-using-CNNs/assets/112823396/5cff822f-798b-4c1d-a6e3-38e747f2a195)
+
+As you can see from the figure above, the training and the validation accuracy excibited some singificant fluctuations. This was a result from running only 25 training steps and 5 validation steps. To overcome this problem, in Preprocessing B, I doubled the number of both steps. These adjustments proved very effective as the fluctuationd were reduced to about ±4%. Making that change  while keeping the augmentations resulted in the following training history for the AlexNet model:
+
+![image](https://github.com/panstenos/Melanoma-Detection-using-CNNs/assets/112823396/95af9b9c-a2b3-43a4-99c6-e6538f0fcefa)
+
+
 ### Preprocessing B:
 
 For the second preprocessing, I did not perform any additional augmentations to the training dataset:
@@ -123,5 +129,5 @@ InceptionV3 training history:
 
 ![image](https://github.com/panstenos/Melanoma-Detection-using-CNNs/assets/112823396/1841ccab-1896-4c0d-a0d9-bdf54e4ebeb4)
 
-We can see that there is some clear overfitting of the model as the training accuracy approaches 100% while the test accuracy fluctuates around 92%. 
+We can see that there is some clear overfitting of the model as the training accuracy approaches 100% while the test accuracy fluctuates around 92%.
 
