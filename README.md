@@ -1,5 +1,5 @@
 # Melanoma-Detection-using-CNNs
-Training CNNs to classify malignant from benign melanomas
+Trying to find the best CNN architecture to correctly classify malignant from benign melanomas. Best model achieved 94% validation accuracy.
 
 ![image](https://github.com/panstenos/Melanoma-Detection-using-CNNs/assets/112823396/ca042868-f489-4628-9cb3-10c6ab96c5cf)
 
@@ -17,7 +17,7 @@ Together, through the utilization of this dataset and the collaborative efforts 
 ## Sources and Inspiration
 This dataset draws inspiration from the critical need for advanced diagnostic tools in dermatology. The images are compiled from diverse sources and showcase the intricate features that challenge traditional diagnostic methods. By sharing this dataset on Kaggle, we invite the global data science community to collaborate, innovate, and contribute towards developing reliable models for melanoma classification.
 
-## About the Dataset
+## <u>About the Dataset</u>
 This dataset, consists of 13,900 meticulously curated images of a uniform size of (224, 224, 3). This is a valuable resource for advancing the field of dermatology and computer-aided diagnostics. The data are split as follows:
 
 |                    | Train Images | Test Images |
@@ -27,7 +27,7 @@ This dataset, consists of 13,900 meticulously curated images of a uniform size o
 
 To check out the data set [click here!](https://www.kaggle.com/datasets/bhaveshmittal/melanoma-cancer-dataset/data)
 
-## Data Collection 
+## <u>Data Collection</u>
 Since I am working at a Colab notebook I uploaded the zip folder of the data on my google drive and then unziped the folder using the following commands:
 ```python
 # mount drive to colab
@@ -39,7 +39,7 @@ drive.mount('/content/drive')
 !unzip data.zip
 ```
 
-## Modelling
+## <u>Modelling</u>
 I explored 3 models. A custom CNN, AlexNet and InceptionV3. All models had an input shape of (224, 224, 3). I also defined a callback to terminate training when the training accuracy exceeded 99.0%.
 ```python
 class myCallback(tf.keras.callbacks.Callback):
@@ -53,7 +53,7 @@ you call this function when you fit the model like so:
 history = model.fit(..., callbacks=[callbacks])
 ```
 
-## Model Performance Comparison
+## <u>Model Performance Comparison</u>
 
 For all training, RMSprop with a learning rate of 0.001 was used.
 
@@ -129,5 +129,13 @@ InceptionV3 training history:
 
 ![image](https://github.com/panstenos/Melanoma-Detection-using-CNNs/assets/112823396/1841ccab-1896-4c0d-a0d9-bdf54e4ebeb4)
 
-We can see that there is some clear overfitting of the model as the training accuracy approaches 100% while the test accuracy fluctuates around 92%.
+We can see that there is some clear overfitting of the model as the training accuracy approaches 100% while the test accuracy fluctuates around 92%. The dense layers of this network consist of a 10% dropout layer. Removing the dropout layer, we get slighly better results. Also the model reached 99.9% accuracy on the 43rd epoch - 6 epochs faster.
 
+InceptionV3v3 training history:
+
+![image](https://github.com/panstenos/Melanoma-Detection-using-CNNs/assets/112823396/76e77b24-fae0-461d-b9ba-31ca2963034b)
+
+| Model          | Train Accuracy | Test Accuracy | Time per Epoch |
+|----------------|----------------|---------------|----------------|
+| InceptionV3    | 0.9920         | 0.9260        |   15s          |
+| InceptionV3v3  | 0.9916         | 0.9384        |   21s          |
