@@ -1,5 +1,5 @@
 # Melanoma-Detection-using-CNNs
-Training CNNs to classify malignant from benign melanomas
+Trying to find the best CNN architecture to correctly classify malignant from benign melanomas. Best model achieved 94% validation accuracy.
 
 ![image](https://github.com/panstenos/Melanoma-Detection-using-CNNs/assets/112823396/ca042868-f489-4628-9cb3-10c6ab96c5cf)
 
