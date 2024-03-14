@@ -25,7 +25,7 @@ This dataset, consists of 13,900 meticulously curated images of a uniform size o
 
 To check out the data set [click here!](https://www.kaggle.com/datasets/bhaveshmittal/melanoma-cancer-dataset/data)
 
-## Preprocessing 
+## Data Collection 
 Since I am working at a Colab notebook I uploaded the zip folder of the data on my google drive and then unziped the folder using the following commands:
 ```python
 # mount drive to colab
@@ -37,8 +37,25 @@ drive.mount('/content/drive')
 !unzip data.zip
 ```
 
-## Image Augmentation
-I used the ImageDataGenerator class to load and preprocess the images. On the training images I performed various augmentations. These help to increase the effective size of the dataset. 
+## Modelling
+I explored 3 models. A custom CNN, AlexNet and InceptionV3. All models had an input shape of (224, 224, 3). I also defined a callback to terminate training when the training accuracy exceeded 99.0%.
+```python
+class myCallback(tf.keras.callbacks.Callback):
+  def on_epoch_end(self, epoch, logs={}):
+    if(logs.get('accuracy')>0.99):
+      print("\nReached 99.0% accuracy -> Terminating Training")
+      self.model.stop_training = True
+```
+you call this function when you fit the model like so:
+```python
+history = model.fit(..., callbacks=[callbacks])
+```
+
+## Model Performance Comparison
+
+For all training, RMSprop with a learning rate of 0.001 was used.
+
+### Preprocessing A:
 ```python
 train_datagen = ImageDataGenerator(rescale=1.0/255.0,
                                    rotation_range=40,
@@ -51,31 +68,44 @@ train_datagen = ImageDataGenerator(rescale=1.0/255.0,
 
 train_generator = train_datagen.flow_from_directory(directory=train_dir, batch_size=20, class_mode='binary', target_size=(224,224))
 ```
-For the test dataset I only rescalled the images:
+For the test dataset:
 ```python
 test_datagen = ImageDataGenerator(rescale=1.0/255.0)
 
 test_generator = test_datagen.flow_from_directory(directory=test_dir, batch_size=20, class_mode='binary', target_size=(224,224))
 ```
 
-## Modelling
-I explored 3 models. A custom CNN, AlexNet and InceptionV3. All models had an input shape of (224, 224, 3). I also defined a callback to terminate training when the training accuracy exceeded 95.0%. This did not happed so training was terminated after the defined number of epochs. Here is my callback function:
+Fitting the models:
 ```python
-class myCallback(tf.keras.callbacks.Callback):
-  def on_epoch_end(self, epoch, logs={}):
-    if(logs.get('accuracy')>0.95):
-      print("\nReached 95.0% accuracy -> Terminating Training")
-      self.model.stop_training = True
-```
-you call this function when you fit the model like so:
-```python
-history = model.fit(..., callbacks=[callbacks])
+history = model.fit(train_generator, steps_per_epoch=25, epochs=100, verbose=1, validation_data=test_generator, validation_steps=5, callbacks=[callbacks])
 ```
 
-## Model Performance Comparison
+| Model          | Train Accuracy | Test Accuracy | Time per Epoch |
+|----------------|----------------|---------------|----------------|
+| Custom CNN     | 0.8780         | 0.8700        |   9s           |
+| AlexNet        | 0.8640         | 0.8600        |   9s           |
+| InceptionV3    | 0.8880         | 0.9300        |  11s           |
 
-| Model          | Train Accuracy | Test Accuracy |
-|----------------|----------------|---------------|
-| Custom CNN     | 0.8780         | 0.8700        |
-| AlexNet        | 0.8640         | 0.8600        |
-| InceptionV3    | 0.8840         | 0.9000        |
+### Preprocessing B:
+```python
+train_datagen = ImageDataGenerator(rescale=1.0/255.0)
+
+train_generator = train_datagen.flow_from_directory(directory=train_dir, batch_size=50, class_mode='binary', target_size=(224,224))
+```
+For the test dataset:
+```python
+test_datagen = ImageDataGenerator(rescale=1.0/255.0)
+
+test_generator = test_datagen.flow_from_directory(directory=test_dir, batch_size=50, class_mode='binary', target_size=(224,224))
+```
+
+Fitting the models:
+```python
+history = model.fit(train_generator, steps_per_epoch=50, epochs=50, verbose=1, validation_data=test_generator, validation_steps=10, callbacks=[callbacks])
+```
+
+| Model          | Train Accuracy | Test Accuracy | Time per Epoch |
+|----------------|----------------|---------------|----------------|
+| Custom CNN     | 0.8844         | 0.8920        |   14s          |
+| AlexNet        | 0.8658         | 0.8560        |   14s          |
+| InceptionV3    | 0.9920         | 0.9260        |   15s          |
