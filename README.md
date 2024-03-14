@@ -2,6 +2,8 @@
 Training CNNs to classify malignant from benign melanomas
 
 ![image](https://github.com/panstenos/Melanoma-Detection-using-CNNs/assets/112823396/785079d5-1bed-4d62-982b-5fb8fa9f2c08)
+![image](https://github.com/panstenos/Melanoma-Detection-using-CNNs/assets/112823396/64ab050e-4f08-4fbf-bb72-4e8ab23faa25)
+
 
 ## Context
 Melanoma, a lethal form of skin cancer, poses a significant public health challenge worldwide. Early detection and accurate diagnosis are critical for effective treatment and improved patient outcomes. This dataset serves as a valuable resource for researchers and healthcare practitioners striving to advance the field of dermatology and oncology.
