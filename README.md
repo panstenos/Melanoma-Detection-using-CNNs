@@ -118,3 +118,10 @@ history = model.fit(train_generator, steps_per_epoch=50, epochs=50, verbose=1, v
 | Custom CNN     | 0.8844         | 0.8920        |   14s          |
 | AlexNet        | 0.8658         | 0.8560        |   14s          |
 | InceptionV3    | 0.9920         | 0.9260        |   15s          |
+
+InceptionV3 training history: 
+
+![image](https://github.com/panstenos/Melanoma-Detection-using-CNNs/assets/112823396/1841ccab-1896-4c0d-a0d9-bdf54e4ebeb4)
+
+We can see that there is some clear overfitting of the model as the training accuracy approaches 100% while the test accuracy fluctuates around 92%. 
+
