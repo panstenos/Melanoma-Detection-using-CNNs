@@ -129,7 +129,7 @@ InceptionV3 training history:
 
 ![image](https://github.com/panstenos/Melanoma-Detection-using-CNNs/assets/112823396/1841ccab-1896-4c0d-a0d9-bdf54e4ebeb4)
 
-We can see that there is some clear overfitting of the model as the training accuracy approaches 100% while the test accuracy fluctuates around 92%. The dense layers of this network consist of a 10% dropout layer. Removing the dropout layer, we get slighly better results.
+We can see that there is some clear overfitting of the model as the training accuracy approaches 100% while the test accuracy fluctuates around 92%. The dense layers of this network consist of a 10% dropout layer. Removing the dropout layer, we get slighly better results. Also the model reached 99.9% accuracy on the 43rd epoch - 6 epochs faster.
 
 InceptionV3v3 training history:
 
