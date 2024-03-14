@@ -56,6 +56,8 @@ history = model.fit(..., callbacks=[callbacks])
 For all training, RMSprop with a learning rate of 0.001 was used.
 
 ### Preprocessing A:
+
+I initially performed multiple augmentations to the training images:
 ```python
 train_datagen = ImageDataGenerator(rescale=1.0/255.0,
                                    rotation_range=40,
@@ -87,6 +89,8 @@ history = model.fit(train_generator, steps_per_epoch=25, epochs=100, verbose=1, 
 | InceptionV3    | 0.8880         | 0.9300        |  11s           |
 
 ### Preprocessing B:
+
+For the second preprocessing, I did not perform any additional augmentations to the training dataset:
 ```python
 train_datagen = ImageDataGenerator(rescale=1.0/255.0)
 
